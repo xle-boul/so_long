@@ -6,7 +6,7 @@
 #    By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 09:58:10 by xle-boul          #+#    #+#              #
-#    Updated: 2022/03/10 11:19:37 by xle-boul         ###   ########.fr        #
+#    Updated: 2022/03/16 22:10:48 by xle-boul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ bonus/mlx_map_init_bonus.c			\
 bonus/mlx_movements_bonus.c			\
 bonus/mlx_enemy_mvt_init_bonus.c	\
 bonus/mlx_enemy_movement_bonus.c	\
-bonus/mlx_enemy_map_bonus.c
+bonus/mlx_enemy_textures_bonus.c	\
+bonus/mlx_sprite.c					\
+bonus/mlx_string_stuff.c
 
 CC = gcc
 
@@ -96,7 +98,7 @@ fclean: clean
 re: fclean $(NAME)
 
 bonus: $(LIB) $(LIB_MLX) $(OBJ_DIR_BONUS)
-	@$(CC) $(FLAGS) $(OBJ_MLX) $(EXTRA_FLAGS) -lpthread $(SOURCES_BONUS) $(LIB) $(LIB_MLX) -I $(INCLUDES_BONUS) -o $(NAME_BONUS)
+	@$(CC) $(FLAGS) $(OBJ_MLX) $(EXTRA_FLAGS) $(SOURCES_BONUS) $(LIB) $(LIB_MLX) -I $(INCLUDES_BONUS) -o $(NAME_BONUS)
 	@echo "Compiling so_long_bonus..."
 	@printf "\033[0;32mso_long_bonus compiled! Run using ./so_long_bonus <path_to/map.ber>\n\e[0m"
 

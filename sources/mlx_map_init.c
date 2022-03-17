@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_map_init.c                                        :+:      :+:    :+:   */
+/*   mlx_map_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,32 +16,32 @@ void	ft_choose_which_hero(t_huge *data, int x, int y)
 {
 	if (data->swtch == 0)
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_down, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->hero_down, x * SIZE, y * SIZE);
 	if (data->swtch == 1)
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_up, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->hero_up, x * SIZE, y * SIZE);
 	if (data->swtch == 2)
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_left, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->hero_left, x * SIZE, y * SIZE);
 	if (data->swtch == 3)
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_right, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->hero_right, x * SIZE, y * SIZE);
 }
 
 void	ft_assign_images_to_map(t_huge *data, int y, int x, char c)
 {
 	if (c == '1')
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->wall, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->wall, x * SIZE, y * SIZE);
 	else if (c == '0')
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->grass, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->grass, x * SIZE, y * SIZE);
 	else if (c == 'E')
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->exit, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->exit, x * SIZE, y * SIZE);
 	else if (c == 'C')
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->collectible, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+			data->collectible, x * SIZE, y * SIZE);
 	else if (c == 'P')
 	{
 		ft_choose_which_hero(data, x, y);

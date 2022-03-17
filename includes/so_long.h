@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:19:50 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/09 22:23:15 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 15:51:23 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 // defined some variables for easier reading
 
 # define MAP_CHARS "01CPE"
-# define TEXTURE_SIZE 32
+# define SIZE 32
 # define HERO_UP "textures/hero/hero_back.xpm"
 # define HERO_DOWN "textures/hero/hero_front.xpm"
 # define HERO_LEFT "textures/hero/hero_left.xpm"
@@ -73,6 +73,10 @@ typedef struct s_huge
 	void		*vader_up;
 	void		*vader_left;
 	void		*vader_right;
+	void		*vader_down_c;
+	void		*vader_up_c;
+	void		*vader_left_c;
+	void		*vader_right_c;
 	int			swtch;
 	int			swtch_foe;
 	void		*grass;
@@ -95,6 +99,12 @@ typedef struct s_huge
 	int			f;
 	int			zero;
 	int			p;
+	int			loop;
+	void		*fly;
+	int			spr;
+	void		*st;
+	void		*stf;
+	void		*stc;
 }				t_huge;
 
 // Chained listed map stuff
@@ -128,6 +138,5 @@ int		ft_free_game(t_huge *data);
 void	ft_mlx_map_init(t_huge *data);
 int		ft_movement_init(int key, t_huge *data);
 void	ft_parse_map(t_huge *data);
-
 
 #endif

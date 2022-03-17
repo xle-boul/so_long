@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_map_init.c                                        :+:      :+:    :+:   */
+/*   mlx_map_init_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:50:57 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/08 22:10:31 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:12:55 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,35 @@
 void	ft_choose_which_hero(t_huge *data, int x, int y)
 {
 	if (data->swtch == 0)
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_down, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->hero_down, x, y);
 	if (data->swtch == 1)
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_up, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->hero_up, x, y);
 	if (data->swtch == 2)
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_left, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->hero_left, x, y);
 	if (data->swtch == 3)
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->hero_right, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->hero_right, x, y);
 }
 
 void	ft_assign_images_to_map(t_huge *data, int y, int x, char c)
 {
 	if (c == '1')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->wall, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->wall, x, y);
 	else if (c == '0')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->grass, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->grass, x, y);
 	else if (c == 'E')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->exit, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
+		ft_image_push(data, data->exit, x, y);
 	else if (c == 'C')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->collectible, x * TEXTURE_SIZE, y * TEXTURE_SIZE);
-	else if (c == 'P')
-	{
-		ft_choose_which_hero(data, x, y);
-		data->p_coord_x = x;
-		data->p_coord_y = y;
-	}
+		ft_image_push(data, data->collectible, x, y);
+	else if (c == 'B')
+		ft_image_push(data, data->fly, x, y);
+	else
+		ft_assign_images_to_map_bonus(data, y, x, c);
 }
 
 void	ft_parse_map(t_huge *data)
 {
-	int	y;
-	int	x;
+	int		y;
+	int		x;
 
 	y = 0;
 	while (y < data->y_axis)
@@ -86,28 +76,25 @@ void	ft_assign_textures_to_images(t_huge *data)
 			HERO_RIGHT, &data->img_width, &data->img_height);
 	data->exit = mlx_xpm_file_to_image(data->mlx,
 			EXIT, &data->img_width, &data->img_height);
+	data->fly = mlx_xpm_file_to_image(data->mlx,
+			FLY1, &data->img_width, &data->img_height);
+	ft_assign_textures_to_images_bonus(data);
 	data->swtch = 0;
 }
 
-void	*ft_hook(void *data)
-{
-	mlx_hook(((t_huge *)data)->mlx_win, 17, 0L, &ft_free_game, (t_huge *)data);
-	mlx_hook(((t_huge *)data)->mlx_win, 2, 1L << 0, &ft_movement_init, (t_huge *)data);
-	return (0);
-}
 void	ft_mlx_map_init(t_huge *data)
 {
-	pthread_t	tid;
-	
-	data->count = 0;
+	data->count = -1;
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx,
-			data->map_size_x, data->map_size_y, "so_long");
+			data->map_size_x, data->map_size_y + SIZE, "so_long");
+	data->loop = 0;
+	data->spr = 0;
 	ft_assign_textures_to_images(data);
-	ft_assign_textures_to_images_bonus(data);
+	ft_status_bar(data);
 	ft_parse_map(data);
-	ft_parse_map_foe(data);
-	pthread_create(&tid, NULL, &ft_hook, (void *)data);
-	pthread_join(tid, NULL);
+	mlx_hook(data->mlx_win, 17, 0L, &ft_free_game, data);
+	mlx_key_hook(data->mlx_win, ft_movement_init, (void *)data);
+	mlx_loop_hook(data->mlx, ft_sprite, (void *)data);
 	mlx_loop(data->mlx);
 }

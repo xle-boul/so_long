@@ -50,8 +50,8 @@ void	ft_check_map_standards(t_huge *data)
 		}
 		i++;
 	}
-	data->map_size_x = data->x_axis * TEXTURE_SIZE;
-	data->map_size_y = data->y_axis * TEXTURE_SIZE;
+	data->map_size_x = data->x_axis * SIZE;
+	data->map_size_y = data->y_axis * SIZE;
 	return ;
 }
 

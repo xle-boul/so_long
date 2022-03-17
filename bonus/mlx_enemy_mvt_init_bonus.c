@@ -6,41 +6,38 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:29:41 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/10 00:33:59 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/16 22:23:46 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-int	ft_random_number_generator(int check)
+int	ft_random_number_generator(void)
 {
-	int	i;
+	int		i;
+	time_t	seconds;
 
-	i = 0;
-	srand(time(0));
-	i = rand() %4;
-	if (i == check)
-	{
-		if (i != 3)
-			i++;
-		else if (i == 3)
-			i = 0;
-	}
-	ft_printf("%d\n", i);
+	time(&seconds);
+	i = (rand() + seconds) % 4;
 	return (i);
 }
 
-void	ft_enemy_movement_init(t_huge *data, int check)
+void	ft_enemy_movement_init(t_huge *data, int sec)
 {
-	int	mvt;
+	int			mvt;
+	static int	checker;
 
-	mvt = ft_random_number_generator(check);
-	if (mvt == 0)
-		ft_enemy_move_up(data, mvt);
-	if (mvt == 1)
-		ft_enemy_move_down(data, mvt);
-	if (mvt == 2)
-		ft_enemy_move_left(data, mvt);
-	if (mvt == 3)
-		ft_enemy_move_right(data, mvt);
+	mvt = ft_random_number_generator();
+	if (sec != checker)
+	{
+		if (mvt == 0)
+			ft_enemy_move_up(data);
+		else if (mvt == 1)
+			ft_enemy_move_down(data);
+		else if (mvt == 2)
+			ft_enemy_move_left(data);
+		else if (mvt == 3)
+			ft_enemy_move_right(data);
+	}
+	checker = sec;
 }

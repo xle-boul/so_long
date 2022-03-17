@@ -6,89 +6,129 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 21:42:54 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/09 23:52:03 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/12 01:41:33 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void	ft_enemy_move_up(t_huge *data, int mvt)
+int	ft_check_where_from(t_huge *data)
+{
+	if (data->map[data->f_coord_y][data->f_coord_x] == 'S')
+		return (0);
+	else if (data->map[data->f_coord_y][data->f_coord_x] == 'F')
+		return (1);
+	return (-1);
+}
+
+void	ft_enemy_move_up(t_huge *data)
 {
 	if (data->map[data->f_coord_y - 1][data->f_coord_x] == '0')
 	{
-		data->map[data->f_coord_y][data->f_coord_x] = '0';
-		data->map[data->f_coord_y - 1][data->f_coord_x + 1] = 'F';
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->vader_up, data->f_coord_x * TEXTURE_SIZE,
-					(data->f_coord_y - 1) * TEXTURE_SIZE);
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->grass, data->f_coord_x * TEXTURE_SIZE,
-					(data->f_coord_y) * TEXTURE_SIZE);
-		data->f_coord_y -= 1;
-		sleep(1);
-		ft_enemy_movement_init(data, 5);
+		data->swtch_foe = 1;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->map[data->f_coord_y - 1][data->f_coord_x] = 'F';
+		ft_parse_map(data);
 	}
+	else if (data->map[data->f_coord_y - 1][data->f_coord_x] == 'C')
+	{
+		data->swtch_foe = 5;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->map[data->f_coord_y - 1][data->f_coord_x] = 'S';
+		ft_parse_map(data);
+	}
+	else if (data->map[data->f_coord_y - 1][data->f_coord_x] == 'P')
+		ft_you_lose(data, data->f_coord_y - 1, data->f_coord_x);
 	else
-		ft_enemy_movement_init(data, mvt);
+		ft_enemy_move_down(data);
 }
 
-void	ft_enemy_move_down(t_huge *data, int mvt)
+void	ft_enemy_move_down(t_huge *data)
 {
 	if (data->map[data->f_coord_y + 1][data->f_coord_x] == '0')
 	{
-		data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->swtch_foe = 0;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
 		data->map[data->f_coord_y + 1][data->f_coord_x] = 'F';
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->vader_down, data->f_coord_x * TEXTURE_SIZE,
-					(data->f_coord_y + 1) * TEXTURE_SIZE);
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->grass, data->f_coord_x * TEXTURE_SIZE,
-					(data->f_coord_y) * TEXTURE_SIZE);
-		data->f_coord_y += 1;
-		sleep(1);
-		ft_enemy_movement_init(data, 5);
+		ft_parse_map(data);
 	}
+	else if (data->map[data->f_coord_y + 1][data->f_coord_x] == 'C')
+	{
+		data->swtch_foe = 4;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->map[data->f_coord_y + 1][data->f_coord_x] = 'S';
+		ft_parse_map(data);
+	}
+	else if (data->map[data->f_coord_y + 1][data->f_coord_x] == '0')
+		ft_you_lose(data, data->f_coord_y + 1, data->f_coord_x);
 	else
-		ft_enemy_movement_init(data, mvt);
+		ft_enemy_move_left(data);
 }
 
-void	ft_enemy_move_left(t_huge *data, int mvt)
+void	ft_enemy_move_left(t_huge *data)
 {
 	if (data->map[data->f_coord_y][data->f_coord_x - 1] == '0')
 	{
-		data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->swtch_foe = 2;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
 		data->map[data->f_coord_y][data->f_coord_x - 1] = 'F';
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->vader_left, (data->f_coord_x - 1) * TEXTURE_SIZE,
-					(data->f_coord_y) * TEXTURE_SIZE);
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->grass, data->f_coord_x * TEXTURE_SIZE,
-					(data->f_coord_y) * TEXTURE_SIZE);
-		data->f_coord_x -= 1;
-		sleep(1);
-		ft_enemy_movement_init(data, 5);
+		ft_parse_map(data);
 	}
+	else if (data->map[data->f_coord_y][data->f_coord_x - 1] == 'C')
+	{
+		data->swtch_foe = 6;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->map[data->f_coord_y][data->f_coord_x - 1] = 'S';
+		ft_parse_map(data);
+	}
+	else if (data->map[data->f_coord_y][data->f_coord_x - 1] == 'P')
+		ft_you_lose(data, data->f_coord_y, data->f_coord_x - 1);
 	else
-		ft_enemy_movement_init(data, mvt);
+		ft_enemy_move_right(data);
 }
 
-void	ft_enemy_move_right(t_huge *data, int mvt)
+void	ft_enemy_move_right(t_huge *data)
 {
 	if (data->map[data->f_coord_y][data->f_coord_x + 1] == '0')
 	{
-		data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->swtch_foe = 3;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
 		data->map[data->f_coord_y][data->f_coord_x + 1] = 'F';
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->vader_right, (data->f_coord_x + 1) * TEXTURE_SIZE,
-					(data->f_coord_y) * TEXTURE_SIZE);
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->grass, data->f_coord_x * TEXTURE_SIZE,
-					(data->f_coord_y) * TEXTURE_SIZE);
-		data->f_coord_x += 1;
-		sleep(1);
-		ft_enemy_movement_init(data, 5);
+		ft_parse_map(data);
 	}
+	else if (data->map[data->f_coord_y][data->f_coord_x + 1] == 'C')
+	{
+		data->swtch_foe = 7;
+		if (ft_check_where_from(data) == 0)
+			data->map[data->f_coord_y][data->f_coord_x] = 'C';
+		if (ft_check_where_from(data) == 1)
+			data->map[data->f_coord_y][data->f_coord_x] = '0';
+		data->map[data->f_coord_y][data->f_coord_x + 1] = 'S';
+		ft_parse_map(data);
+	}
+	else if (data->map[data->f_coord_y][data->f_coord_x + 1] == 'P')
+		ft_you_lose(data, data->f_coord_y, data->f_coord_x + 1);
 	else
-		ft_enemy_movement_init(data, mvt);
+		ft_enemy_move_up(data);
 }
-

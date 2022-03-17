@@ -27,7 +27,7 @@ void	ft_move_up(t_huge *data)
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
+			ft_printf("GG, %d moves! Sure you could do better", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -52,7 +52,7 @@ void	ft_move_down(t_huge *data)
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
+			ft_printf("GG, %d moves! Sure you could do better", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -77,7 +77,7 @@ void	ft_move_left(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
+			ft_printf("GG, %d moves! Sure you could do better", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -102,7 +102,7 @@ void	ft_move_right(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
+			ft_printf("GG, %d moves! Sure you could do better", data->count);
 			ft_free_game(data);
 			return ;
 		}

@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 07:25:08 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/09 22:47:18 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 16:20:14 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,15 @@ void	ft_move_up(t_huge *data)
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'E'
 			&& data->c != 0)
 			return ;
+		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'B')
+			ft_you_lose(data, -1, -1);
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
 		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
-		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
-			ft_free_game(data);
-			return ;
-		}
+			ft_game_over(data, 'E');
 		data->map[data->p_coord_y - 1][data->p_coord_x] = 'P';
 	}
 	data->swtch = 1;
@@ -44,18 +41,15 @@ void	ft_move_down(t_huge *data)
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'E'
 			&& data->c != 0)
 			return ;
+		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'B')
+			ft_you_lose(data, -1, -1);
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'C')
 				data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
 		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
-		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
-			ft_free_game(data);
-			return ;
-		}
+			ft_game_over(data, 'E');
 		data->map[data->p_coord_y + 1][data->p_coord_x] = 'P';
 	}
 	data->swtch = 0;
@@ -69,18 +63,15 @@ void	ft_move_left(t_huge *data)
 		if ((data->map[data->p_coord_y][data->p_coord_x - 1] == 'E'
 			&& data->c != 0))
 			return ;
+		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'B')
+			ft_you_lose(data, -1, -1);
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
 		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'E'
 			&& data->c == 0)
-		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
-			ft_free_game(data);
-			return ;
-		}
+			ft_game_over(data, 'E');
 		data->map[data->p_coord_y][data->p_coord_x - 1] = 'P';
 	}
 	data->swtch = 2;
@@ -94,18 +85,15 @@ void	ft_move_right(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'E'
 			&& data->c != 0)
 			return ;
+		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'B')
+			ft_you_lose(data, -1, -1);
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
 		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'E'
 			&& data->c == 0)
-		{
-			ft_printf("GG, %d moves! Sure you could do better though", data->count);
-			ft_free_game(data);
-			return ;
-		}
+			ft_game_over(data, 'E');
 		data->map[data->p_coord_y][data->p_coord_x + 1] = 'P';
 	}
 	data->swtch = 3;
@@ -114,9 +102,10 @@ void	ft_move_right(t_huge *data)
 
 int	ft_movement_init(int key, t_huge *data)
 {
+	data->count++;
 	if (key == 65307)
 		ft_free_game(data);
-	else if (key == 'w' || key == 65362)
+	if (key == 'w' || key == 65362)
 		ft_move_up(data);
 	else if (key == 'a' || key == 65361)
 		ft_move_left(data);
@@ -124,5 +113,6 @@ int	ft_movement_init(int key, t_huge *data)
 		ft_move_down(data);
 	else if (key == 'd' || key == 65363)
 		ft_move_right(data);
+	ft_string_to_map(data);
 	return (0);
 }
