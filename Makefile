@@ -6,7 +6,7 @@
 #    By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 09:58:10 by xle-boul          #+#    #+#              #
-#    Updated: 2022/03/16 22:10:48 by xle-boul         ###   ########.fr        #
+#    Updated: 2022/03/17 21:30:10 by xle-boul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ bonus/mlx_enemy_mvt_init_bonus.c	\
 bonus/mlx_enemy_movement_bonus.c	\
 bonus/mlx_enemy_textures_bonus.c	\
 bonus/mlx_sprite.c					\
-bonus/mlx_string_stuff.c
+bonus/mlx_string_stuff.c			\
+bonus/free_base_bonus.c
 
 CC = gcc
 

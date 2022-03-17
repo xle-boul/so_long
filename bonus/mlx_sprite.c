@@ -6,11 +6,13 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 22:05:58 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 16:07:21 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:08:46 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+// Static foes animation
 
 void	ft_animate_sprite(t_huge *data)
 {
@@ -39,6 +41,9 @@ void	ft_animate_sprite(t_huge *data)
 	data->spr++;
 	ft_parse_map(data);
 }
+
+// Initiate big boss' movement and setup sprite animation
+// for static foes -> animation timed over repeated loop
 
 int	ft_sprite(t_huge *data)
 {

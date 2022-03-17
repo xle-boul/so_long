@@ -6,11 +6,14 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:41:59 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 16:25:18 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:34:58 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+// Prints the numbers in the game window rather than
+// in the shell. Took liberty of adding collectibles
 
 void	ft_string_to_map(t_huge *data)
 {
@@ -30,23 +33,24 @@ void	ft_string_to_map(t_huge *data)
 	free(coll);
 }
 
+// Function for the footer of the game.
+// Static int just there to avoid freeing the first loop around
+
 void	ft_status_bar(t_huge *data)
 {
-	int	i;
-	int	size;
+	int			i;
 	static int	check = 0;
 
 	if (check != 0)
 		ft_keep_freeing_game(data);
 	i = 0;
-	size = data->map_size_x;
 	data->st = mlx_xpm_file_to_image(data->mlx,
 			STATUS, &data->img_width, &data->img_height);
 	data->stf = mlx_xpm_file_to_image(data->mlx,
 			STATUS_FOOT, &data->img_width, &data->img_height);
 	data->stc = mlx_xpm_file_to_image(data->mlx,
 			STATUS_COIN, &data->img_width, &data->img_height);
-	while (i < size)
+	while (i < data->map_size_x)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 			data->st, i, data->map_size_y);

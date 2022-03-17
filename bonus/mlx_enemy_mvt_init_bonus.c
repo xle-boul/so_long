@@ -6,11 +6,14 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:29:41 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/16 22:23:46 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:24:38 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+// Pseudo random number generator using the rand() function
+// associated with %4 of the seconds passed
 
 int	ft_random_number_generator(void)
 {
@@ -21,6 +24,10 @@ int	ft_random_number_generator(void)
 	i = (rand() + seconds) % 4;
 	return (i);
 }
+
+// Initiates the foe's movements. Receives the seconds elapsed
+// and checks if the previous matches. If it doesn't, the feo
+// moves. This allows for a movement every second.
 
 void	ft_enemy_movement_init(t_huge *data, int sec)
 {

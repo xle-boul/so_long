@@ -6,11 +6,14 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:50:57 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/08 22:10:31 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:32:37 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+// Selects the right images according to the direction
+// of our hero
 
 void	ft_choose_which_hero(t_huge *data, int x, int y)
 {
@@ -27,6 +30,8 @@ void	ft_choose_which_hero(t_huge *data, int x, int y)
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 			data->hero_right, x * SIZE, y * SIZE);
 }
+
+// Prints the proper images according to the char scouted
 
 void	ft_assign_images_to_map(t_huge *data, int y, int x, char c)
 {
@@ -50,6 +55,9 @@ void	ft_assign_images_to_map(t_huge *data, int y, int x, char c)
 	}
 }
 
+// Function to go through the map and scoot for
+// changes. Sends then the results to interpret
+
 void	ft_parse_map(t_huge *data)
 {
 	int	y;
@@ -67,6 +75,9 @@ void	ft_parse_map(t_huge *data)
 		y++;
 	}
 }
+
+// Sets up the mlx loop and different variables that
+// We are going to use down the road.
 
 void	ft_assign_textures_to_images(t_huge *data)
 {

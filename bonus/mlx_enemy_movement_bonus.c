@@ -6,11 +6,14 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 21:42:54 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/12 01:41:33 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:25:34 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+// Allows to print the correct background behind the foe.
+// If he steps on coins, they show behind him
 
 int	ft_check_where_from(t_huge *data)
 {

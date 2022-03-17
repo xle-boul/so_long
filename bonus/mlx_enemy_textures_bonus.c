@@ -6,11 +6,13 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 21:47:09 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/16 22:34:07 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:21:33 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+// Simple function to put images to window, just to gain lines
 
 void	ft_image_push(t_huge *data, void *texture, int x, int y)
 {
@@ -18,28 +20,22 @@ void	ft_image_push(t_huge *data, void *texture, int x, int y)
 		texture, x * SIZE, y * SIZE);
 }
 
-void	ft_assign_images_to_map_bonus(t_huge *data, int y, int x, char c)
+// Selects the right images according to the direction
+// of our hero
+
+void	ft_choose_which_hero(t_huge *data, int x, int y)
 {
-	if (c == 'P')
-	{
-		data->p_coord_x = x;
-		data->p_coord_y = y;
-		ft_choose_which_hero(data, x, y);
-	}
-	else if (c == 'F')
-	{
-		data->f_coord_x = x;
-		data->f_coord_y = y;
-		ft_choose_which_foe(data, x, y);
-	}
-	else if (c == 'S')
-	{
-		data->f_coord_x = x;
-		data->f_coord_y = y;
-		ft_choose_which_foe(data, x, y);
-	}
-	ft_game_over(data, 'a');
+	if (data->swtch == 0)
+		ft_image_push(data, data->hero_down, x, y);
+	if (data->swtch == 1)
+		ft_image_push(data, data->hero_up, x, y);
+	if (data->swtch == 2)
+		ft_image_push(data, data->hero_left, x, y);
+	if (data->swtch == 3)
+		ft_image_push(data, data->hero_right, x, y);
 }
+
+// Assigns images to variables. This time around for the foe
 
 void	ft_assign_textures_to_images_bonus(t_huge *data)
 {
@@ -61,6 +57,8 @@ void	ft_assign_textures_to_images_bonus(t_huge *data)
 			VADER_RIGHT_C, &data->img_width, &data->img_height);
 	data->swtch_foe = 0;
 }
+
+// Choses the right image according to the direction of the foe
 
 void	ft_choose_which_foe(t_huge *data, int x, int y)
 {

@@ -6,23 +6,38 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:50:57 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 16:12:55 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:20:41 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void	ft_choose_which_hero(t_huge *data, int x, int y)
+// The rest of the chars
+
+void	ft_assign_images_to_map_bonus(t_huge *data, int y, int x, char c)
 {
-	if (data->swtch == 0)
-		ft_image_push(data, data->hero_down, x, y);
-	if (data->swtch == 1)
-		ft_image_push(data, data->hero_up, x, y);
-	if (data->swtch == 2)
-		ft_image_push(data, data->hero_left, x, y);
-	if (data->swtch == 3)
-		ft_image_push(data, data->hero_right, x, y);
+	if (c == 'P')
+	{
+		data->p_coord_x = x;
+		data->p_coord_y = y;
+		ft_choose_which_hero(data, x, y);
+	}
+	else if (c == 'F')
+	{
+		data->f_coord_x = x;
+		data->f_coord_y = y;
+		ft_choose_which_foe(data, x, y);
+	}
+	else if (c == 'S')
+	{
+		data->f_coord_x = x;
+		data->f_coord_y = y;
+		ft_choose_which_foe(data, x, y);
+	}
+	ft_game_over(data, 'a');
 }
+
+// Prints the proper images according to the char scouted
 
 void	ft_assign_images_to_map(t_huge *data, int y, int x, char c)
 {
@@ -39,6 +54,9 @@ void	ft_assign_images_to_map(t_huge *data, int y, int x, char c)
 	else
 		ft_assign_images_to_map_bonus(data, y, x, c);
 }
+
+// Function to go through the map and scoot for
+// changes. Sends then the results to interpret
 
 void	ft_parse_map(t_huge *data)
 {
@@ -57,6 +75,8 @@ void	ft_parse_map(t_huge *data)
 		y++;
 	}
 }
+
+// Assigns images to verables
 
 void	ft_assign_textures_to_images(t_huge *data)
 {
@@ -81,6 +101,9 @@ void	ft_assign_textures_to_images(t_huge *data)
 	ft_assign_textures_to_images_bonus(data);
 	data->swtch = 0;
 }
+
+// Sets up the mlx loop and different variables that
+// We are going to use down the road.
 
 void	ft_mlx_map_init(t_huge *data)
 {
