@@ -6,7 +6,7 @@
 #    By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 09:58:10 by xle-boul          #+#    #+#              #
-#    Updated: 2022/03/17 21:30:10 by xle-boul         ###   ########.fr        #
+#    Updated: 2022/03/18 09:09:57 by xle-boul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,4 +115,7 @@ bonus_fclean: bonus_clean
 	
 bonus_re: bonus_fclean bonus
 
-.PHONY: all clean fclean bonus bonus_re bonus_fclean re
+norm:
+	@norminette *.c sources bonus ft_printf gnl includes
+
+.PHONY: all clean fclean bonus bonus_re bonus_fclean re norm

@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 00:56:05 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:34:15 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/18 09:07:41 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void	ft_game_over(t_huge *data, char c)
 {
 	if (data->f_coord_x == data->p_coord_x
 		&& data->f_coord_y == data->p_coord_y)
+	{
+		ft_printf("You lost... To Darth Vader, Predictable! NOOB!");
 		ft_free_game(data);
+	}
 	else if (c == 'E')
 	{
 		ft_printf("GG, %d moves! Sure you could do better", data->count);
@@ -77,7 +80,7 @@ void	ft_you_lose(t_huge *data, int y, int x)
 	j = data->f_coord_y;
 	if (y == -1 && x == -1)
 	{
-		ft_printf("You lost... Really?! NOOB!");
+		ft_printf("You lost... To a bat... Really?! NOOB!");
 		ft_free_game(data);
 	}
 	if (ft_check_where_from(data) == 0)
@@ -88,6 +91,6 @@ void	ft_you_lose(t_huge *data, int y, int x)
 			data->grass, i * SIZE, j * SIZE);
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
 		data->vader_down, x * SIZE, y * SIZE);
-	ft_printf("You lost... Really?! NOOB!");
+	ft_printf("You lost... To Darth Vader, Predictable! NOOB!");
 	ft_free_game(data);
 }

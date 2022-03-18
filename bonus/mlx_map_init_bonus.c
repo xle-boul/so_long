@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:50:57 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:20:41 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:46:30 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,15 @@ void	ft_assign_textures_to_images(t_huge *data)
 void	ft_mlx_map_init(t_huge *data)
 {
 	data->count = -1;
+	data->loop = 0;
+	data->spr = 0;
+	data->f_coord_x = 0;
+	data->f_coord_y = 0;
+	data->p_coord_x = 0;
+	data->p_coord_y = 0;
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx,
 			data->map_size_x, data->map_size_y + SIZE, "so_long");
-	data->loop = 0;
-	data->spr = 0;
 	ft_assign_textures_to_images(data);
 	ft_status_bar(data);
 	ft_parse_map(data);
