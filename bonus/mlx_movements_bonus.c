@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 07:25:08 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:11:53 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/19 15:34:26 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_move_up(t_huge *data)
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
 			ft_game_over(data, 'E');
@@ -46,7 +45,6 @@ void	ft_move_down(t_huge *data)
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'C')
 				data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
 			ft_game_over(data, 'E');
@@ -68,7 +66,6 @@ void	ft_move_left(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'E'
 			&& data->c == 0)
 			ft_game_over(data, 'E');
@@ -90,7 +87,6 @@ void	ft_move_right(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'E'
 			&& data->c == 0)
 			ft_game_over(data, 'E');
