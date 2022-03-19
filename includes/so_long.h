@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:19:50 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 15:51:23 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:33:19 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # include <X11/XKBlib.h>
 # include "../ft_printf/header/ft_printf.h"
 # include "../ft_printf/libft/libft.h"
-# include "../gnl/get_next_line.h"
+# include "get_next_line.h"
 
 // defined some variables for easier reading
 

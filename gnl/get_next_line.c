@@ -6,11 +6,11 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 13:55:40 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/06 23:21:36 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:32:33 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 char	*ft_get_that_line(char *patch)
 {

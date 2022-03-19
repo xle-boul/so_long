@@ -6,11 +6,11 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 13:55:31 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/06 23:20:44 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/03/18 22:32:49 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
