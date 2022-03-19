@@ -1,0 +1,20 @@
+# Programs
+
+so_long
+so_long_bonus
+
+# Objects
+
+obj/
+obj_bonus/
+
+# Libraries
+
+libftprintf.a
+libmlx_Linux.a
+ft_printf/libft/libft.a
+
+#Libraries Objects
+
+mlx_linux/obj
+ft_printf/libft/objs
