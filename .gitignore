@@ -13,8 +13,10 @@ obj_bonus/
 libftprintf.a
 libmlx_Linux.a
 ft_printf/libft/libft.a
+ft_printf/libftprintf.a
 
 #Libraries Objects
 
 mlx_linux/obj
 ft_printf/libft/objs
+ft_printf/sources/objs
