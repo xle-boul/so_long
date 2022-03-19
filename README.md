@@ -1,6 +1,6 @@
 # so_long
 so_long project of school 42. Thanks to https://itch.io/profile/pipoya for his amazing work with textures.
-
+```
 Makefile rules:
 
 'make':                 Compile mandatory part
@@ -15,3 +15,4 @@ Makefile rules:
 
 'make norm':            Check norminette
 'clean_all':            Reset folder
+```
