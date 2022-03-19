@@ -6,7 +6,7 @@
 #    By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 09:58:10 by xle-boul          #+#    #+#              #
-#    Updated: 2022/03/19 10:46:33 by xle-boul         ###   ########.fr        #
+#    Updated: 2022/03/19 15:08:18 by xle-boul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ $(NAME): $(OBJ_FILES) $(LIB) $(LIB_MLX)
 $(NAME_BONUS): $(OBJ_BONUS) $(LIB) $(LIB_MLX)
 	@printf "\n$(YELLOW)Compiling so_long_bonus...$(END)\n"
 	@$(CC) $(FLAGS) $(OBJ_MLX) $(EXTRA_FLAGS) $(OBJ_BONUS) $(LIB) $(LIB_MLX) -I $(INCLUDES) -o $(NAME_BONUS)
-	@printf "\n$(GREEN)mso_long_bonus compiled!\n$(END)Run program: $(RED)./so_long_bonus <bonus/maps/'map-name'.ber>\n$(END)"
+	@printf "\n$(GREEN)so_long_bonus compiled!\n$(END)Run program: $(RED)./so_long_bonus <bonus/maps/'map-name'.ber>\n$(END)"
 
 $(LIB):
 	@printf "\n$(YELLOW)Compiling $(LIB)...$(END)\n"
