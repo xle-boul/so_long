@@ -6,7 +6,7 @@
 #    By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 09:58:10 by xle-boul          #+#    #+#              #
-#    Updated: 2022/03/19 10:19:41 by xle-boul         ###   ########.fr        #
+#    Updated: 2022/03/19 10:46:33 by xle-boul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ $(LIB_MLX):
 all: $(NAME)
 
 clean:
-	@printf "\n$(YELLOW)Cleaning $(OJB_DIR) and $(NAME)...$(END)\n"
+	@printf "\n$(YELLOW)Cleaning objects and $(NAME)...$(END)\n"
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_DIR)
 
@@ -101,7 +101,7 @@ re: fclean $(NAME)
 bonus: $(NAME_BONUS)
 
 bonus_clean:
-	@printf "\n$(YELLOW)Cleaning $(OBJ_DIR_BONUS) and $(NAME_BONUS)...$(END)\n"
+	@printf "\n$(YELLOW)Cleaning objects and $(NAME_BONUS)...$(END)\n"
 	@rm -f $(NAME_BONUS)
 	@rm -rf $(OBJ_DIR_BONUS)
 
