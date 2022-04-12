@@ -7,6 +7,7 @@ so_long_bonus
 
 obj/
 obj_bonus/
+mlx/*.o
 
 # Libraries
 
@@ -20,3 +21,7 @@ ft_printf/libftprintf.a
 mlx_linux/obj
 ft_printf/libft/objs
 ft_printf/sources/objs
+
+#README
+
+README.md
