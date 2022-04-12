@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 22:05:58 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:08:46 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 13:16:43 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_sprite(t_huge *data)
 	time(&seconds);
 	sec = seconds;
 	ft_enemy_movement_init(data, sec);
-	if (data->loop < 2500)
+	if (data->loop < 300)
 	{
 		data->loop++;
 		return (0);

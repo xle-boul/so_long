@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:41:59 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:34:58 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 13:21:08 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_string_to_map(t_huge *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->st,
 		SIZE, data->map_size_y);
 	mlx_string_put(data->mlx, data->mlx_win, SIZE + 10,
-		data->map_size_y + SIZE / 2 + 5, 0xffffff, steps);
+		data->map_size_y + SIZE / 2 - 10, 0xffffff, steps);
 	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 10,
-		data->map_size_y + SIZE / 2 + 5, 0xffffff, coll);
+		data->map_size_y + SIZE / 2 - 10, 0xffffff, coll);
 	free(steps);
 	free(coll);
 }

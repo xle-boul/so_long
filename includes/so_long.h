@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:19:50 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/18 22:33:19 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 12:51:26 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <sys/mman.h>
-# include <X11/Xlib.h>
-# include <X11/Xutil.h>
-# include <sys/ipc.h>
-# include <sys/shm.h>
-# include <X11/extensions/XShm.h>
-# include <X11/XKBlib.h>
 # include "../ft_printf/header/ft_printf.h"
 # include "../ft_printf/libft/libft.h"
 # include "get_next_line.h"

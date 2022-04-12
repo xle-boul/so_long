@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 07:25:08 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:32:58 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 13:56:50 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ void	ft_move_up(t_huge *data)
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better", data->count);
+			ft_printf("GG, %d moves! Sure you could do better\n", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -47,12 +45,10 @@ void	ft_move_down(t_huge *data)
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'C')
 				data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better", data->count);
+			ft_printf("GG, %d moves! Sure you could do better\n", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -72,12 +68,10 @@ void	ft_move_left(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better", data->count);
+			ft_printf("GG, %d moves! Sure you could do better\n", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -97,12 +91,10 @@ void	ft_move_right(t_huge *data)
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'C')
 			data->c--;
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
-		data->count++;
-		ft_printf("moves: %d\n", data->count);
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'E'
 			&& data->c == 0)
 		{
-			ft_printf("GG, %d moves! Sure you could do better", data->count);
+			ft_printf("GG, %d moves! Sure you could do better\n", data->count);
 			ft_free_game(data);
 			return ;
 		}
@@ -118,15 +110,22 @@ void	ft_move_right(t_huge *data)
 
 int	ft_movement_init(int key, t_huge *data)
 {
-	if (key == 65307)
+	if (key == 53)
+	{
+		ft_printf("Program executed a clean exit.\n");
 		ft_free_game(data);
-	else if (key == 'w' || key == 65362)
+	}
+	else if (key == 13)
 		ft_move_up(data);
-	else if (key == 'a' || key == 65361)
+	else if (key == 0)
 		ft_move_left(data);
-	else if (key == 's' || key == 65364)
+	else if (key == 1)
 		ft_move_down(data);
-	else if (key == 'd' || key == 65363)
+	else if (key == 2)
 		ft_move_right(data);
+	else if (key != 53 || key != 13 || key != 0 || key != 1 || key != 2)
+		return (0);
+	data->count++;
+	ft_printf("moves: %d\n", data->count);
 	return (0);
 }

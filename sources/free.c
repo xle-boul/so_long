@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 00:56:05 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:33:37 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 13:08:30 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	ft_free_game(t_huge *data)
 		mlx_destroy_image(data->mlx, data->wall);
 		mlx_destroy_image(data->mlx, data->grass);
 		mlx_destroy_window(data->mlx, data->mlx_win);
-		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
 	ft_free_map(data);

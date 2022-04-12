@@ -6,7 +6,7 @@
 #    By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 09:58:10 by xle-boul          #+#    #+#              #
-#    Updated: 2022/03/19 15:08:18 by xle-boul         ###   ########.fr        #
+#    Updated: 2022/04/12 13:01:28 by xle-boul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ OBJ_BONUS := $(patsubst $(SRC_DIR_BONUS)/%.c,$(OBJ_DIR_BONUS)/%.o,$(SRC_BONUS))
 
 CC = gcc
 FLAGS = -Werror -Wall -Wextra
-EXTRA_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/local/lib -Imlx_linux -lXext -lX11 -lm -lz
+EXTRA_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 INCLUDES = includes
 
@@ -50,26 +50,25 @@ LIB_DIR = ft_printf/
 LIB_OBJS_DIR = ft_printf/objs/
 LIB = libftprintf.a
 
-OBJ_MLX = mlx_linux/obj/*.o
-MLX_DIR = mlx_linux/
-LIB_MLX = libmlx_Linux.a
+MLX_DIR = mlx/
+LIB_MLX = libmlx.a
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c $(HEADER) $(HEADER_GNL)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(FLAGS) -c -o $@ $<
+	@$(CC) $(FLAGS) -Imlx -c -o $@ $<
 
 $(OBJ_DIR_BONUS)/%.o : $(SRC_DIR_BONUS)/%.c $(HEADER_BONUS) $(HEADER_GNL)
 	@mkdir -p $(OBJ_DIR_BONUS)
-	@$(CC) $(FLAGS) -c -o $@ $<
+	@$(CC) $(FLAGS) -Imlx -c -o $@ $<
 
 $(NAME): $(OBJ_FILES) $(LIB) $(LIB_MLX)
 	@printf "\n$(YELLOW)Compiling so_long...$(END)\n"
-	@$(CC) $(FLAGS) $(OBJ_MLX) $(EXTRA_FLAGS) $(OBJ_FILES) $(LIB) $(LIB_MLX) -I $(INCLUDES) -o $@
+	@$(CC) $(FLAGS) $(EXTRA_FLAGS) $(OBJ_FILES) $(LIB) $(LIB_MLX) -I $(INCLUDES) -o $@
 	@printf "\n$(GREEN)so_long compiled!\n$(END)Run program: $(RED)./so_long <maps/'map-name'.ber>\n$(END)"
 
 $(NAME_BONUS): $(OBJ_BONUS) $(LIB) $(LIB_MLX)
 	@printf "\n$(YELLOW)Compiling so_long_bonus...$(END)\n"
-	@$(CC) $(FLAGS) $(OBJ_MLX) $(EXTRA_FLAGS) $(OBJ_BONUS) $(LIB) $(LIB_MLX) -I $(INCLUDES) -o $(NAME_BONUS)
+	@$(CC) $(FLAGS) $(EXTRA_FLAGS) $(OBJ_BONUS) $(LIB) $(LIB_MLX) -I $(INCLUDES) -o $(NAME_BONUS)
 	@printf "\n$(GREEN)so_long_bonus compiled!\n$(END)Run program: $(RED)./so_long_bonus <bonus/maps/'map-name'.ber>\n$(END)"
 
 $(LIB):
