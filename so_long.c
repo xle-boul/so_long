@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:54:33 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 13:28:38 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 14:18:04 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	main(int ac, char **av)
 	head = ft_map_init(&data, head);
 	ft_list_to_2d_array(head, &data);
 	ft_mlx_map_init(&data);
+	system("leaks so_long");
 	return (0);
 }

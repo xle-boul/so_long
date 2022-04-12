@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 00:56:05 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 13:08:30 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 14:02:47 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int	ft_free_game(t_huge *data)
 		free(data->mlx);
 	}
 	ft_free_map(data);
+	ft_printf("Program performed a clean exit.\n");
 	exit(EXIT_SUCCESS);
 }

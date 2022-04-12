@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 07:25:08 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 13:53:56 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 14:04:08 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,7 @@ void	ft_move_right(t_huge *data)
 int	ft_movement_init(int key, t_huge *data)
 {
 	if (key == 53)
-	{
-		ft_printf("Program executed a clean exit.\n");
 		ft_free_game(data);
-	}
 	else if (key == 13)
 		ft_move_up(data);
 	else if (key == 0)
@@ -115,7 +112,7 @@ int	ft_movement_init(int key, t_huge *data)
 		ft_move_down(data);
 	else if (key == 2)
 		ft_move_right(data);
-	else if (key != 53 || key != 13 || key != 0 || key != 1 || key != 2)
+	else
 		return (0);
 	data->count++;
 	ft_string_to_map(data);
