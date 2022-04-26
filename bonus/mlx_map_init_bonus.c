@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:50:57 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 20:43:49 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:09:13 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ void	ft_mlx_map_init(t_huge *data)
 	data->f_coord_y = 0;
 	data->p_coord_x = 0;
 	data->p_coord_y = 0;
-	if (data->map_size_x < 4 * SIZE)
-		data->map_size_x = 4 * SIZE;
+	if (data->map_size_x < 5 * SIZE)
+		data->map_size_x = 5 * SIZE;
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx,
 			data->map_size_x, data->map_size_y + SIZE, "so_long");

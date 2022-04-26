@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:41:59 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 21:00:16 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/26 11:09:34 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_string_to_map(t_huge *data)
 		SIZE, data->map_size_y);
 	mlx_string_put(data->mlx, data->mlx_win, SIZE + 10,
 		data->map_size_y + SIZE / 2 - 10, 0xffffff, steps);
-	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 10,
+	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 20,
 		data->map_size_y + SIZE / 2 - 10, 0xffffff, coll);
 	free(steps);
 	free(coll);
@@ -59,7 +59,7 @@ void	ft_status_bar(t_huge *data)
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
 		data->stf, 0, data->map_size_y);
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
-		data->stc, 2 * SIZE, data->map_size_y);
+		data->stc, 2 * SIZE + 20, data->map_size_y);
 	check++;
 }
 
@@ -74,7 +74,7 @@ void	ft_status_bar_init(t_huge *data)
 	steps = ft_itoa(data->count);
 	mlx_string_put(data->mlx, data->mlx_win, SIZE + 10,
 		data->map_size_y + SIZE / 2 - 10, 0xffffff, steps);
-	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 10,
+	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 20,
 		data->map_size_y + SIZE / 2 - 10, 0xffffff, coll);
 	free(coll);
 	free(steps);
@@ -88,16 +88,15 @@ void	ft_arrange_status_bar(t_huge *data, int x)
 {
 	int	i;
 
-	i = 0;
-	if (x < data->map_size_x)
+	while (x <= data->map_size_x)
 	{
+		i = 0;
 		while (i < data->map_size_y)
 		{
 			mlx_put_image_to_window(data->mlx,
-				data->mlx_win, data->st, 3 * SIZE, i);
+				data->mlx_win, data->st, x, i);
 			i += 32;
 		}
+		x += 32;
 	}
-	else
-		return ;
 }
