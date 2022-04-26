@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 23:31:58 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/07 23:06:32 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 15:43:05 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ t_map	*ft_map_init(t_huge *data, t_map *head)
 		data->y_axis++;
 		free (data->line);
 	}
+	if (data->y_axis == 0)
+		ft_error_handler(1);
 	close (data->fd);
 	return (head);
 }

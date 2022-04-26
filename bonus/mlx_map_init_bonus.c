@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 20:50:57 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 13:48:22 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:43:49 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ void	ft_assign_textures_to_images(t_huge *data)
 
 void	ft_mlx_map_init(t_huge *data)
 {
-	char	*coll;
+	int	x;
 
-	coll = ft_itoa(data->c);
+	x = data->map_size_x;
 	data->count = 0;
 	data->loop = 0;
 	data->spr = 0;
@@ -117,16 +117,15 @@ void	ft_mlx_map_init(t_huge *data)
 	data->f_coord_y = 0;
 	data->p_coord_x = 0;
 	data->p_coord_y = 0;
+	if (data->map_size_x < 4 * SIZE)
+		data->map_size_x = 4 * SIZE;
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx,
 			data->map_size_x, data->map_size_y + SIZE, "so_long");
 	ft_assign_textures_to_images(data);
 	ft_status_bar(data);
-	mlx_string_put(data->mlx, data->mlx_win, SIZE + 10,
-		data->map_size_y + SIZE / 2 - 10, 0xffffff, "0");
-	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 10,
-		data->map_size_y + SIZE / 2 - 10, 0xffffff, coll);
-	free(coll);
+	ft_arrange_status_bar(data, x);
+	ft_status_bar_init(data);
 	ft_parse_map(data);
 	mlx_hook(data->mlx_win, 17, 0L, &ft_free_game, data);
 	mlx_hook(data->mlx_win, 02, 1L << 0, ft_movement_init, (void *)data);

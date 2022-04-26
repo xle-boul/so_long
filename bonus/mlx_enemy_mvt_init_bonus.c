@@ -6,11 +6,21 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 20:29:41 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 21:24:38 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 16:46:51 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+int	ft_enemy_check(t_huge *data)
+{
+	if (data->map[data->f_coord_y + 1][data->f_coord_x] == '1'
+		&& data->map[data->f_coord_y - 1][data->f_coord_x] == '1'
+		&& data->map[data->f_coord_y][data->f_coord_x + 1] == '1'
+		&& data->map[data->f_coord_y][data->f_coord_x - 1] == '1')
+		return (-1);
+	return (0);
+}
 
 // Pseudo random number generator using the rand() function
 // associated with %4 of the seconds passed
@@ -34,8 +44,10 @@ void	ft_enemy_movement_init(t_huge *data, int sec)
 	int			mvt;
 	static int	checker;
 
+	if (ft_enemy_check(data) == -1)
+		return ;
 	mvt = ft_random_number_generator();
-	if (sec != checker)
+	if (sec != checker && ft_enemy_check(data) == 0)
 	{
 		if (mvt == 0)
 			ft_enemy_move_up(data);

@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 11:19:50 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/03/17 16:19:28 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:38:24 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ void	ft_animate_sprite(t_huge *data);
 
 // String
 
+void	ft_status_bar_init(t_huge *data);
 void	ft_string_to_map(t_huge *data);
 void	ft_status_bar(t_huge *data);
+void	ft_arrange_status_bar(t_huge *data, int x);
 
 #endif

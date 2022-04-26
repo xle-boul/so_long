@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 07:25:08 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 14:04:10 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 20:58:45 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_move_up(t_huge *data)
 			return ;
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'C')
 			data->c--;
+		data->count++;
+		ft_printf("moves: %d\n", data->count);
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
 		if (data->map[data->p_coord_y - 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
@@ -44,6 +46,8 @@ void	ft_move_down(t_huge *data)
 			return ;
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'C')
 				data->c--;
+		data->count++;
+		ft_printf("moves: %d\n", data->count);
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
 		if (data->map[data->p_coord_y + 1][data->p_coord_x] == 'E'
 			&& data->c == 0)
@@ -67,6 +71,8 @@ void	ft_move_left(t_huge *data)
 			return ;
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'C')
 			data->c--;
+		data->count++;
+		ft_printf("moves: %d\n", data->count);
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
 		if (data->map[data->p_coord_y][data->p_coord_x - 1] == 'E'
 			&& data->c == 0)
@@ -90,6 +96,8 @@ void	ft_move_right(t_huge *data)
 			return ;
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'C')
 			data->c--;
+		data->count++;
+		ft_printf("moves: %d\n", data->count);
 		data->map[data->p_coord_y][data->p_coord_x] = '0';
 		if (data->map[data->p_coord_y][data->p_coord_x + 1] == 'E'
 			&& data->c == 0)
@@ -122,7 +130,5 @@ int	ft_movement_init(int key, t_huge *data)
 		ft_move_right(data);
 	else
 		return (0);
-	data->count++;
-	ft_printf("moves: %d\n", data->count);
 	return (0);
 }

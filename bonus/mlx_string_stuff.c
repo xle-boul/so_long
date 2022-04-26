@@ -6,7 +6,7 @@
 /*   By: xle-boul <xle-boul@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 15:41:59 by xle-boul          #+#    #+#             */
-/*   Updated: 2022/04/12 13:21:08 by xle-boul         ###   ########.fr       */
+/*   Updated: 2022/04/12 21:00:16 by xle-boul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,50 @@ void	ft_status_bar(t_huge *data)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
 			data->st, i, data->map_size_y);
-		i += 32;
+		i += SIZE;
 	}
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
 		data->stf, 0, data->map_size_y);
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
 		data->stc, 2 * SIZE, data->map_size_y);
 	check++;
+}
+
+// displays the digits before the first move of the hero
+
+void	ft_status_bar_init(t_huge *data)
+{
+	char	*coll;
+	char	*steps;
+
+	coll = ft_itoa(data->c);
+	steps = ft_itoa(data->count);
+	mlx_string_put(data->mlx, data->mlx_win, SIZE + 10,
+		data->map_size_y + SIZE / 2 - 10, 0xffffff, steps);
+	mlx_string_put(data->mlx, data->mlx_win, 3 * SIZE + 10,
+		data->map_size_y + SIZE / 2 - 10, 0xffffff, coll);
+	free(coll);
+	free(steps);
+}
+
+// function to make sure the window size is big enough
+// for the footer. if not, puts textures accordingly
+// to make it look good.
+
+void	ft_arrange_status_bar(t_huge *data, int x)
+{
+	int	i;
+
+	i = 0;
+	if (x < data->map_size_x)
+	{
+		while (i < data->map_size_y)
+		{
+			mlx_put_image_to_window(data->mlx,
+				data->mlx_win, data->st, 3 * SIZE, i);
+			i += 32;
+		}
+	}
+	else
+		return ;
 }
